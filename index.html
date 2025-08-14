@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contador de visitas</title>
+</head>
+<body>
+    <h1>¡Hola, Render!</h1>
+    <p>Has visitado esta página <span id="counter">0</span> veces.</p>
+    <script>
+        fetch('/api/visit')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('counter').innerText = data.count;
+            });
+    </script>
+</body>
+</html>
