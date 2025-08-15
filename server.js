@@ -1,5 +1,6 @@
 const express = require('express');
 const { Pool } = require('pg');
+const path = require('path'); // <- Agrega esta línea
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,7 +9,7 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL
 });
 
-const path = require('path');
+// Estas líneas le dicen al servidor dónde encontrar la página
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
