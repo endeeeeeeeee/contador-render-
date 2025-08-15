@@ -6,9 +6,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
-
 // Estas líneas le dicen al servidor dónde encontrar la página
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
